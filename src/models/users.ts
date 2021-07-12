@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne, JoinColumn} from "typeorm";
-import {UserProfile} from "./usersProfile";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany} from "typeorm";
+import {Expenses} from "./expenses";
 
 @Entity()
 export class Users extends BaseEntity {
@@ -7,14 +7,16 @@ export class Users extends BaseEntity {
     @PrimaryGeneratedColumn("uuid")
     id!: number;
 
-    @Column("text")
-    name!: string;
+    @Column("varchar")
+    login!: string;
 
     @Column("varchar")
-    age!: string;
+    password!: string;
 
+    /*@Column("varchar")
+    name!: string;*/
 
-    @OneToOne(type => UserProfile)
-    @JoinColumn()
-    usersProfile!: UserProfile;
+    @OneToMany(() => Expenses, expenses => expenses.user)
+    expenses!: Expenses[];
+
 }

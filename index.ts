@@ -21,12 +21,6 @@ routes.forEach((route: any) => {
     app.route(route);
 })
 
-
-
-
-
-
-
 app.listen(3000, (err, address) => {
     if (err) {
         console.error(err)

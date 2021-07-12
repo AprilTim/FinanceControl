@@ -1,5 +1,5 @@
 import {Users} from "../models/users";
-import {UserProfile} from "../models/usersProfile";
+
 
 exports.getAllUsers = async (req: any, reply: any) => {
     try {
@@ -20,21 +20,27 @@ exports.getUser = async (req: any, reply: any) => {
     }
 }
 
+exports.login = async (req: any, reply: any) => {
+    try {
+        const firstUser = await Users.findOne(req.body);
+        console.log(firstUser)
+        return firstUser;
+    } catch (err) {
+        console.error(err)
+        return false
+    }
+}
+
 exports.addUser = async (req: any, reply: any) => {
     try {
-        console.log(req.body)
-        const usersProfile = new UserProfile();
-        usersProfile.firstName = req.body.name;
-        usersProfile.lastName = req.body.lastName;
-
         const user = new Users();
-        user.name = req.body.name;
-        user.age = req.body.age;
-        user.usersProfile = usersProfile;
 
-        await UserProfile.save(usersProfile);
+        user.login = req.body.login;
+        user.password = req.body.password;
         await Users.save(user);
         console.log("SAVE USER")
+        return reply.send("Ready")
+
     } catch (err) {
         console.error(err)
     }

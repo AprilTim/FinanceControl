@@ -1,4 +1,5 @@
 const userController = require('../Controllers/usersController');
+const expenseController = require('../Controllers/expensesController');
 
 const routes = [
 
@@ -16,6 +17,16 @@ const routes = [
         method: 'POST',
         url: '/user',
         handler: userController.addUser,
+    },
+    {
+        method: 'POST',
+        url: '/login',
+        handler: userController.login,
+    },
+    {
+        method: 'POST',
+        url: '/expense',
+        handler: expenseController.addExpenses,
     }
 ]
 module.exports = routes
