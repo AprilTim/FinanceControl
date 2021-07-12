@@ -10,7 +10,7 @@ app.register(require('fastify-static'), {
     prefix: '/public',
 })
 
-app.get('/*', (request, reply: any) => {
+app.get('/', (request, reply: any) => {
     return reply.sendFile('index.html')
 })
 

@@ -6,6 +6,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+// @ts-ignore
 import Login from "./Components/Login";
 
 export const App = () => {
@@ -14,8 +15,8 @@ export const App = () => {
     return (
         <Router>
             <Switch>
-                <Route path={"/login"}>
-                    <Login/>
+                <Route path={"/"}>
+                    <Login state={state} setState={setState}/>
                 </Route>
             </Switch>
         </Router>
