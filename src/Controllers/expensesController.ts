@@ -6,13 +6,22 @@ exports.addExpenses = async (req: any, reply: any) => {
         const expense = new Expenses();
 
         expense.cost = req.body.cost;
-        expense.type = req.body.typeExpense;
-        const user = await Users.findOne(req.body.id);
-        expense.user = req.body.id;
+        expense.type = req.body.type;
+        expense.user = req.body.user;
         await Expenses.save(expense);
         console.log("SAVE EXPENSE")
         return reply.send("Ready")
 
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+exports.getExpenses = async (req: any, reply: any) => {
+    try {
+        const expenses = await Expenses.find();
+        console.log(expenses)
+        return expenses
     } catch (err) {
         console.error(err)
     }

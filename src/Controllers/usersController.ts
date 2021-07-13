@@ -46,3 +46,12 @@ exports.addUser = async (req: any, reply: any) => {
     }
 }
 
+exports.deleteUser = async (req: any, reply: any) => {
+
+    try {
+        const userDelete: any = await Users.findOne(req.body);
+        await Users.remove(userDelete);
+    } catch {
+        console.log("Error")
+    }
+}

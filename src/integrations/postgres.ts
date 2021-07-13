@@ -7,7 +7,7 @@ const createConnectionDB = async () => {
     const connection = await createConnection({
         type: "postgres",
         host: "localhost",
-        port: 5432, //52923
+        port: 57067, //5432
         username: "postgres",
         password: "123",
         database: "postgres",

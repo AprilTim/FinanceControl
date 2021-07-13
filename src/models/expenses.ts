@@ -12,7 +12,7 @@ export class Expenses extends BaseEntity {
     @Column("varchar")
     type!: string;
 
-    @ManyToOne(() => Users, user => user.expenses)
-    user!: Users;
+    @Column("varchar")
+    user!: string;
 
 }

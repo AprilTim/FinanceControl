@@ -27,6 +27,16 @@ const routes = [
         method: 'POST',
         url: '/expense',
         handler: expenseController.addExpenses,
+    },
+    {
+        method: 'DELETE',
+        url: '/user',
+        handler: userController.deleteUser,
+    },
+    {
+        method: 'GET',
+        url: '/expenses',
+        handler: expenseController.getExpenses,
     }
 ]
 module.exports = routes
