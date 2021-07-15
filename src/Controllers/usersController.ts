@@ -36,6 +36,7 @@ exports.addUser = async (req: any, reply: any) => {
         const user = new Users();
 
         user.login = req.body.login;
+        user.name = req.body.name;
         user.password = req.body.password;
         await Users.save(user);
         console.log("SAVE USER")

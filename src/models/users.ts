@@ -8,6 +8,9 @@ export class Users extends BaseEntity {
     id!: number;
 
     @Column("varchar")
+    name!: string;
+
+    @Column("varchar")
     login!: string;
 
     @Column("varchar")
@@ -15,4 +18,8 @@ export class Users extends BaseEntity {
 
     /*@Column("varchar")
     name!: string;*/
+
+    @OneToMany(() => Expenses, expenses => expenses.user)
+    expenses!: Expenses[];
+
 }
